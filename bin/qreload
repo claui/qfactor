@@ -1,0 +1,10 @@
+#!/bin/bash
+
+/usr/bin/env osascript - "$(dirname "${BASH_SOURCE[0]}")/.." \
+  "$(basename "${0}")" << 'EOF'
+on run(argv)
+  set script_path to (item 1 of argv) & "/libexec/_" ¬
+    & (item 2 of argv) & ".scpt"
+  run (load script script_path)
+end run
+EOF
